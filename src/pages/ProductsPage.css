@@ -1,0 +1,42 @@
+/* src/pages/ProductsPage.css */
+.products-page-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #1a1a1a; /* Fundo cinza escuro, consistente com main-content */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra mais escura */
+  color: #F0F0F0; /* Cor do texto padrão da página de produtos */
+}
+
+.products-page-container h2 {
+  color: #FFD700; /* Título em amarelo dourado */
+  margin-bottom: 40px;
+  font-size: 2.5em;
+  text-shadow: 1px 1px 5px rgba(255, 215, 0, 0.3); /* Leve brilho para o título */
+}
+
+.product-grid {
+  display: grid; /* Ativa o layout de grid */
+  /* Coloca itens lado a lado, preenchendo automaticamente com colunas de no mínimo 220px */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 50px; /* Espaçamento entre os itens */
+  justify-content: center; /* Centraliza os itens no grid */
+  padding: 0 100px;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr; /* Uma coluna em telas muito pequenas */
+    padding: 0;
+  }
+}

@@ -1,0 +1,160 @@
+/* src/pages/HomePage.css */
+
+.homepage-container {
+  /* Certifique-se de que o container principal da homepage não tenha max-width limitando a seção de herói */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #000000; /* Fundo preto para o restante da página */
+}
+
+.hero-section {
+  position: relative; /* Para posicionar o overlay e o conteúdo */
+  width: 100%;
+  height: 70vh; /* Altura da viewport, ajustável */
+  background-image: url('https://via.placeholder.com/1920x1080/000000/FFD700?text=Joias+Elegantes'); /* Imagem de fundo: placeholder */
+  /* Dica: Use uma imagem de alta qualidade que represente joias */
+  background-size: cover; /* Cobre toda a área */
+  background-position: center; /* Centraliza a imagem */
+  display: flex;
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  text-align: center;
+  color: #FFFFFF; /* Cor do texto em branco */
+  overflow: hidden; /* Garante que o conteúdo não transborde */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay preto semi-transparente para legibilidade */
+  z-index: 1; /* Garante que o overlay esteja acima da imagem de fundo */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* Garante que o conteúdo esteja acima do overlay */
+  max-width: 800px;
+  padding: 0 20px;
+  animation: fadeIn 2s ease-out forwards; /* Animação de fade-in */
+}
+
+.hero-title {
+  font-size: 3.8em;
+  font-weight: bold;
+  color: #FFD700; /* Dourado para o título principal */
+  margin-bottom: 20px;
+  line-height: 1.2;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombra para o texto */
+}
+
+.hero-subtitle {
+  font-size: 1.5em;
+  color: #F0F0F0; /* Cinza claro para o subtítulo */
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo para o botão moderno */
+.modern-btn {
+  display: inline-block;
+  padding: 15px 35px;
+  border: none; /* Remove a borda sólida para usar sombra */
+  border-radius: 50px; /* Borda arredondada para um visual moderno */
+  background: linear-gradient(45deg, #FFD700, #FFA500); /* Gradiente dourado */
+  color: #000000; /* Texto preto */
+  font-size: 1.2em;
+  font-weight: bold;
+  text-decoration: none; /* Sem sublinhado */
+  transition: all 0.4s ease-in-out; /* Transição suave para todos os efeitos */
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4); /* Sombra dourada mais pronunciada */
+  text-transform: uppercase; /* Texto em maiúsculas */
+  letter-spacing: 1px; /* Espaçamento entre letras */
+  position: relative;
+  overflow: hidden; /* Para o efeito de brilho */
+}
+
+.modern-btn:hover {
+  background: linear-gradient(45deg, #FFA500, #FFD700); /* Inverte o gradiente no hover */
+  color: #000000;
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6); /* Sombra mais intensa */
+  transform: translateY(-5px); /* Elevação mais notável */
+}
+
+.modern-btn:active {
+  transform: translateY(0); /* Volta à posição original ao clicar */
+  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3); /* Sombra mais suave ao clicar */
+}
+
+/* Efeito de brilho ao passar o mouse */
+.modern-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2); /* Brilho branco semi-transparente */
+  transform: skewX(-20deg);
+  transition: all 0.7s ease;
+}
+
+.modern-btn:hover::after {
+  left: 100%; /* Move o brilho para a direita no hover */
+}
+
+
+/* Animação de Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 3em;
+  }
+  .hero-subtitle {
+    font-size: 1.3em;
+  }
+  .hero-section {
+    height: 60vh; /* Ajusta a altura em telas médias */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5em;
+  }
+  .hero-subtitle {
+    font-size: 1.1em;
+  }
+  .modern-btn {
+    padding: 12px 30px;
+    font-size: 1.1em;
+  }
+  .hero-section {
+    height: 50vh; /* Ajusta a altura em tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2em;
+  }
+  .hero-subtitle {
+    font-size: 1em;
+  }
+  .modern-btn {
+    padding: 10px 25px;
+    font-size: 1em;
+  }
+  .hero-section {
+    height: 40vh; /* Ajusta a altura em celulares */
+  }
+}

@@ -1,0 +1,31 @@
+/* Exemplo em src/App.css ou novo styles/pages.css */
+.page-content {
+  padding: 40px 20px;
+  max-width: 960px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center; /* Centralizar conteúdo da página */
+}
+
+.page-content h2 {
+  color: #795548;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #795548;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #a0817b;
+}

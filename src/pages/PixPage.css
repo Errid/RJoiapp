@@ -1,0 +1,151 @@
+/* src/pages/PixPage.css */
+
+.pix-page-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #222222;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  color: #F0F0F0;
+  text-align: center;
+}
+
+.pix-page-container h2 {
+  color: #FFD700;
+  margin-bottom: 25px;
+  font-size: 2.2em;
+  text-shadow: 1px 1px 5px rgba(255, 215, 0, 0.3);
+}
+
+.pix-instruction {
+  font-size: 1.1em;
+  color: #BBBBBB;
+  margin-bottom: 30px;
+}
+
+.pix-qr-code-container {
+  background-color: #FFFFFF; /* Fundo branco para o QR Code */
+  padding: 15px;
+  border-radius: 8px;
+  display: inline-block; /* Para que o container se ajuste ao QR Code */
+  margin-bottom: 30px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); /* Sombra dourada */
+}
+
+.pix-qr-code {
+  width: 250px; /* Tamanho fixo para o QR Code */
+  height: 250px;
+  display: block; /* Remove espaço extra abaixo da imagem */
+}
+
+.pix-code-copy-container {
+  margin-bottom: 30px;
+}
+
+.pix-code-label {
+  font-size: 1em;
+  color: #F0F0F0;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.pix-code-input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.pix-code-input {
+  width: calc(100% - 120px); /* Ajusta largura para o botão ao lado */
+  max-width: 300px;
+  padding: 10px;
+  border: 1px solid #FFD700; /* Borda dourada */
+  border-radius: 5px;
+  background-color: #333;
+  color: #FFD700; /* Texto dourado */
+  font-size: 0.9em;
+  text-align: center;
+  cursor: text;
+}
+
+.copy-pix-btn {
+  background-color: #FFD700;
+  color: #000000;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.copy-pix-btn:hover {
+  background-color: #E0B800;
+  transform: translateY(-2px);
+}
+.copy-pix-btn:active {
+  transform: translateY(0);
+}
+
+.pix-warning {
+  color: #e74c3c; /* Vermelho para aviso */
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.pix-info {
+  color: #27ae60; /* Verde para informação positiva */
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.pix-actions {
+  margin-top: 30px;
+}
+
+.pix-actions .back-to-products-btn {
+  background-color: #444444;
+  color: #F0F0F0;
+  padding: 12px 25px;
+  border: 1px solid #666;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.pix-actions .back-to-products-btn:hover {
+  background-color: #555555;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+.pix-actions .back-to-products-btn:active {
+  transform: translateY(0);
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .pix-page-container {
+    padding: 20px;
+  }
+  .pix-qr-code {
+    width: 200px;
+    height: 200px;
+  }
+  .pix-code-input-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .pix-code-input {
+    width: 100%;
+    max-width: none;
+  }
+  .copy-pix-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,40 @@
+/* src/components/Footer.css */
+.footer {
+  background-color: #1a1a1a; /* Fundo preto/cinza escuro para o rodapé */
+  color: #F0F0F0; /* Texto em branco/cinza claro */
+  padding: 20px 0;
+  text-align: center; /* Centraliza o texto e elementos inline-block dentro do rodapé */
+  width: 100%; /* Garante que o rodapé ocupe 100% da largura disponível */
+  margin-top: 50px; /* Para dar um espaçamento da div App */
+  border-top: 1px solid #333; /* Uma linha sutil para separar */
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.6); /* Sombra para cima mais pronunciada */
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto; /* Centraliza o container dentro do rodapé */
+  padding: 0 20px;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #BBBBBB; /* Tom de cinza mais suave para o texto padrão */
+}
+
+.footer .social-links {
+  margin-top: 15px; /* Mais espaço acima dos links sociais */
+}
+
+.footer .social-links a {
+  color: #F0F0F0; /* Cor dos links sociais em branco/cinza claro */
+  text-decoration: none;
+  margin: 0 12px; /* Mais espaçamento entre os links */
+  transition: color 0.3s ease, transform 0.2s ease; /* Transição suave */
+  font-weight: 500;
+}
+
+.footer .social-links a:hover {
+  color: #FFD700; /* Dourado no hover */
+  transform: translateY(-2px); /* Pequena elevação no hover */
+}

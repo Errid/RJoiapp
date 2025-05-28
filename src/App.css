@@ -1,0 +1,30 @@
+/* src/App.css */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Faz com que a página ocupe a altura total da viewport */
+}
+
+.main-content {
+  flex: 1; /* Faz o conteúdo principal ocupar o espaço restante disponível */
+  padding: 20px;
+  text-align: center; /* Centraliza o texto de boas-vindas */
+  max-width: 1200px; /* Largura máxima para o conteúdo principal */
+  margin: 20px auto; /* Centraliza o bloco de conteúdo horizontalmente */
+}
+
+/* NOVO: Estilo para a mensagem de feedback "Adicionado!" */
+.added-to-cart-feedback {
+  display: block;
+  margin-top: 10px;
+  color: #27ae60; /* Verde para sucesso */
+  font-weight: bold;
+  font-size: 0.9em;
+  animation: fadeOut 2s forwards; /* Animação para desaparecer */
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}

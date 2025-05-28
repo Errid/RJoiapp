@@ -1,0 +1,82 @@
+/* src/components/Header.css */
+.header {
+  background-color: #1a1a1a; /* Fundo preto/cinza escuro para o cabeçalho */
+  padding: 15px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Sombra mais escura e pronunciada */
+  border-bottom: 1px solid #333; /* Uma linha sutil para separar */
+}
+
+.header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.header .logo a {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #FFD700; /* Amarelo dourado para o logo */
+  text-decoration: none;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); /* Leve brilho dourado mais intenso */
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Transição para hover */
+}
+
+.header .logo a:hover {
+  color: #E0B800; /* Tom mais escuro de dourado no hover */
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.8); /* Brilho mais forte no hover */
+}
+
+.header .nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header .nav li {
+  margin-left: 25px;
+}
+
+.header .nav a {
+  text-decoration: none;
+  color: #F0F0F0; /* Texto dos links em branco/cinza claro */
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease; /* Transição para hover */
+  position: relative; /* Para o efeito de sublinhado */
+}
+
+.header .nav a:hover {
+  color: #FFD700; /* Dourado no hover */
+  transform: translateY(-2px); /* Pequena elevação */
+}
+
+/* Efeito de sublinhado sutil no hover */
+.header .nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px; /* Posição abaixo do texto */
+  left: 50%; /* Começa do centro */
+  background-color: #FFD700; /* Cor dourada do sublinhado */
+  transition: all 0.3s ease-out;
+  transform: translateX(-50%); /* Centraliza o sublinhado */
+}
+
+.header .nav a:hover::after {
+  width: 100%; /* Expande para a largura total no hover */
+}
+
+/* Media Queries para responsividade básica (se necessário, expandir) */
+@media (max-width: 768px) {
+  .header .nav {
+    /* Esconder navegação em telas menores e usar um menu hambúrguer, por exemplo */
+    display: none;
+  }
+  .header .container {
+    justify-content: center; /* Centraliza o logo se a navegação sumir */
+  }
+}

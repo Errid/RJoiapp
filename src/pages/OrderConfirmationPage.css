@@ -1,0 +1,105 @@
+/* src/pages/OrderConfirmationPage.css */
+
+.order-confirmation-container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #222222; /* Fundo cinza escuro */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  color: #F0F0F0;
+  text-align: center;
+}
+
+.order-confirmation-container h2 {
+  color: #FFD700; /* Dourado para o título */
+  margin-bottom: 20px;
+  font-size: 2.5em;
+}
+
+.thank-you-message {
+  font-size: 1.3em;
+  color: #F0F0F0;
+  margin-bottom: 15px;
+}
+
+.order-number {
+  font-size: 1.2em;
+  margin-bottom: 25px;
+  color: #BBBBBB;
+}
+
+.order-number strong {
+  color: #FFD700; /* Dourado para o número do pedido */
+  font-size: 1.1em;
+}
+
+.order-confirmation-container p {
+  line-height: 1.6;
+  color: #BBBBBB;
+}
+
+.confirmation-actions {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.confirmation-actions .back-to-products-btn,
+.confirmation-actions .home-btn {
+  display: block; /* Para que os botões ocupem a largura total em colunas */
+  width: 80%; /* Ajusta a largura dos botões */
+  max-width: 300px; /* Limita a largura máxima */
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  cursor: pointer;
+}
+
+.confirmation-actions .back-to-products-btn {
+  background-color: #444444; /* Cinza escuro */
+  color: #F0F0F0;
+}
+
+.confirmation-actions .back-to-products-btn:hover {
+  background-color: #555555;
+  transform: translateY(-2px);
+}
+
+.confirmation-actions .home-btn {
+  background-color: #FFD700; /* Dourado para o botão principal */
+  color: #000000;
+}
+
+.confirmation-actions .home-btn:hover {
+  background-color: #E0B800;
+  transform: translateY(-2px);
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 600px) {
+  .order-confirmation-container {
+    padding: 20px;
+    margin: 30px auto;
+  }
+
+  .order-confirmation-container h2 {
+    font-size: 2em;
+  }
+
+  .thank-you-message, .order-number {
+    font-size: 1.1em;
+  }
+
+  .confirmation-actions .back-to-products-btn,
+  .confirmation-actions .home-btn {
+    width: 100%; /* Ocupa a largura total em telas menores */
+    max-width: none;
+  }
+}

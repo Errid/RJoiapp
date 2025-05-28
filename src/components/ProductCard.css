@@ -1,0 +1,46 @@
+/* src/components/Header.css */
+.header {
+  background-color: #1a1a1a; /* Fundo preto/cinza escuro para o cabeçalho */
+  padding: 15px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* Sombra mais escura */
+  border-bottom: 1px solid #333; /* Uma linha sutil para separar */
+}
+
+.header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.header .logo a {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #FFD700; /* Amarelo dourado para o logo */
+  text-decoration: none;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.4); /* Leve brilho dourado */
+}
+
+.header .nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header .nav li {
+  margin-left: 25px;
+}
+
+.header .nav a {
+  text-decoration: none;
+  color: #F0F0F0; /* Texto dos links em branco/cinza claro */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header .nav a:hover {
+  color: #FFD700; /* Dourado no hover */
+}

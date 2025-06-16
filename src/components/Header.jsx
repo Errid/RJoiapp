@@ -1,25 +1,34 @@
-// src/components/Header.jsx
-import React from 'react';
-import { Link } from 'react-router-dom'; // Importa Link para navegação
-import { useCart } from '../context/CartContext'; // NOVO: Importa o hook customizado para usar o carrinho
-import './Header.css'; // Importa os estilos CSS para o Header
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import './Header.css';
 
 function Header() {
-  const { getTotalItems } = useCart(); // Obtém a função 'getTotalItems' do contexto do carrinho
+  const { getTotalItems } = useCart();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
     <header className="header">
       <div className="container">
         <div className="logo">
-          <Link to="/">RJoias</Link> {/* Link para a página inicial */}
+          <Link to="/">RJoias</Link>
         </div>
-        <nav className="nav">
+
+        {/* Ícone hamburguer */}
+        <div className="menu-toggle" onClick={toggleMenu}>
+          ☰
+        </div>
+
+        <nav className={`nav ${menuOpen ? 'active' : ''}`}>
           <ul>
-            <li><Link to="/produtos">Produtos</Link></li> {/* Link para a página de produtos */}
-            <li><Link to="/sobre">Sobre Nós</Link></li>   {/* Link para a página "Sobre Nós" */}
-            <li><Link to="/contato">Contato</Link></li>   {/* Link para a página de contato (a ser criada) */}
-            {/* Link para a página do carrinho, exibindo a contagem total de itens */}
-            <li><Link to="/carrinho">Carrinho ({getTotalItems()})</Link></li>
+            <li><Link to="/produtos" onClick={toggleMenu}>Produtos</Link></li>
+            <li><Link to="/sobre" onClick={toggleMenu}>Sobre Nós</Link></li>
+            <li><Link to="/contato" onClick={toggleMenu}>Contato</Link></li>
+            <li><Link to="/carrinho" onClick={toggleMenu}>Carrinho ({getTotalItems()})</Link></li>
           </ul>
         </nav>
       </div>

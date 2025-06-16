@@ -1,9 +1,11 @@
-/* src/components/Header.css */
 .header {
-  background-color: #1a1a1a; /* Fundo preto/cinza escuro para o cabeçalho */
+  background-color: #1a1a1a;
   padding: 15px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Sombra mais escura e pronunciada */
-  border-bottom: 1px solid #333; /* Uma linha sutil para separar */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid #333;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
 }
 
 .header .container {
@@ -18,15 +20,15 @@
 .header .logo a {
   font-size: 1.8em;
   font-weight: bold;
-  color: #FFD700; /* Amarelo dourado para o logo */
+  color: #FFD700;
   text-decoration: none;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); /* Leve brilho dourado mais intenso */
-  transition: color 0.3s ease, text-shadow 0.3s ease; /* Transição para hover */
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .header .logo a:hover {
-  color: #E0B800; /* Tom mais escuro de dourado no hover */
-  text-shadow: 0 0 12px rgba(255, 215, 0, 0.8); /* Brilho mais forte no hover */
+  color: #E0B800;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
 }
 
 .header .nav ul {
@@ -42,41 +44,71 @@
 
 .header .nav a {
   text-decoration: none;
-  color: #F0F0F0; /* Texto dos links em branco/cinza claro */
+  color: #F0F0F0;
   font-weight: 500;
-  transition: color 0.3s ease, transform 0.2s ease; /* Transição para hover */
-  position: relative; /* Para o efeito de sublinhado */
+  transition: color 0.3s ease, transform 0.2s ease;
+  position: relative;
 }
 
 .header .nav a:hover {
-  color: #FFD700; /* Dourado no hover */
-  transform: translateY(-2px); /* Pequena elevação */
+  color: #FFD700;
+  transform: translateY(-2px);
 }
 
-/* Efeito de sublinhado sutil no hover */
 .header .nav a::after {
   content: '';
   position: absolute;
   width: 0;
   height: 2px;
-  bottom: -5px; /* Posição abaixo do texto */
-  left: 50%; /* Começa do centro */
-  background-color: #FFD700; /* Cor dourada do sublinhado */
+  bottom: -5px;
+  left: 50%;
+  background-color: #FFD700;
   transition: all 0.3s ease-out;
-  transform: translateX(-50%); /* Centraliza o sublinhado */
+  transform: translateX(-50%);
 }
 
 .header .nav a:hover::after {
-  width: 100%; /* Expande para a largura total no hover */
+  width: 100%;
 }
 
-/* Media Queries para responsividade básica (se necessário, expandir) */
+/* Menu Hamburguer (oculto no desktop) */
+.menu-toggle {
+  display: none;
+  font-size: 2em;
+  color: #FFD700;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-  .header .nav {
-    /* Esconder navegação em telas menores e usar um menu hambúrguer, por exemplo */
-    display: none;
+  .menu-toggle {
+    display: block;
   }
-  .header .container {
-    justify-content: center; /* Centraliza o logo se a navegação sumir */
+
+  .nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #1a1a1a;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+    flex-direction: column;
+  }
+
+  .nav.active {
+    height: 220px;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .nav li {
+    margin: 15px 0;
   }
 }

@@ -1,46 +1,73 @@
-/* src/components/Header.css */
-.header {
-  background-color: #1a1a1a; /* Fundo preto/cinza escuro para o cabeçalho */
-  padding: 15px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* Sombra mais escura */
-  border-bottom: 1px solid #333; /* Uma linha sutil para separar */
+/* src/components/ProductCard.css */
+
+.product-card {
+ border: 1px solid #ccc;
+ border-radius: 8px;
+ padding: 16px;
+ text-align: center;
+ transition: box-shadow 0.3s;
 }
 
-.header .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
+.product-card:hover {
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.header .logo a {
-  font-size: 1.8em;
-  font-weight: bold;
-  color: #FFD700; /* Amarelo dourado para o logo */
-  text-decoration: none;
-  text-shadow: 0 0 5px rgba(255, 215, 0, 0.4); /* Leve brilho dourado */
+.product-link {
+ text-decoration: none; /* Remove sublinhado do link */
+ color: inherit; /* Herda a cor do texto do pai */
 }
 
-.header .nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
+.product-image-container {
+ margin-bottom: 12px;
 }
 
-.header .nav li {
-  margin-left: 25px;
+.product-image {
+ max-width: 100%;
+ height: auto;
 }
 
-.header .nav a {
-  text-decoration: none;
-  color: #F0F0F0; /* Texto dos links em branco/cinza claro */
-  font-weight: 500;
-  transition: color 0.3s ease;
+.product-name {
+ font-size: 1.2em;
+ margin: 8px 0;
 }
 
-.header .nav a:hover {
-  color: #FFD700; /* Dourado no hover */
+.product-price {
+ font-size: 1.1em;
+ color: #333;
+}
+
+/* Estilos do botão "Adicionar ao Carrinho" */
+.add-to-cart-button {
+ display: block;
+ background-color: #444444; /* Cor de fundo do botão */
+ color: #F0F0F0; /* Cor do texto */
+ padding: 12px 25px; /* Espaçamento interno */
+ border: 1px solid #666; /* Borda do botão */
+ border-radius: 8px; /* Bordas arredondadas */
+ cursor: pointer; /* Cursor de ponteiro */
+ font-size: 1.1em; /* Tamanho da fonte */
+ text-decoration: none; /* Remove sublinhado */
+ transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease; /* Transições suaves */
+ margin: 20px auto 0 auto; /* Margens */
+ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra do botão */
+ max-width: 250px; /* Largura máxima */
+ width: 100%; /* Largura total */
+ text-align: center; /* Centraliza o texto */
+}
+
+.add-to-cart-button:hover {
+ background-color: #555555; /* Cor de fundo ao passar o mouse */
+ color: #FFFFFF; /* Cor do texto ao passar o mouse */
+ transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+}
+
+.add-to-cart-button:active {
+ transform: translateY(0); /* Retorna ao normal ao clicar */
+}
+
+.added-to-cart-feedback {
+ display: block;
+ margin-top: 10px;
+ color: green;
+ font-weight: bold;
 }

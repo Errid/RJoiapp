@@ -1,48 +1,46 @@
 // src/components/ProductCard.jsx
-import React, { useState } from 'react'; // NOVO: Importa useState para a mensagem de feedback
-import { Link } from 'react-router-dom'; // Importa o Link para navegação
-import { useCart } from '../context/CartContext'; // NOVO: Importa o hook customizado para usar o carrinho
-import './ProductCard.css'; // Importa os estilos CSS para o ProductCard
+
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import './ProductCard.css';
 
 function ProductCard({ product }) {
-  const { addItem } = useCart(); // Obtém a função 'addItem' do contexto do carrinho
-  const [showAddedMessage, setShowAddedMessage] = useState(false); // Estado para controlar a visibilidade da mensagem
+  const { addItem } = useCart();
+  const [showAddedMessage, setShowAddedMessage] = useState(false);
 
-  const handleAddToCart = (e) => {
-    // Impede que o clique no botão "borbulhe" para o elemento pai (Link)
-    // e ative a navegação para a página de detalhes do produto.
-    e.stopPropagation();
-    addItem(product); // Adiciona o produto ao carrinho
-    setShowAddedMessage(true); // Mostra a mensagem de "Adicionado!"
-    // Esconde a mensagem após 2 segundos
-    setTimeout(() => {
-      setShowAddedMessage(false);
-    }, 2000);
-  };
+  const handleAddToCart = (e) => {
+    e.stopPropagation(); // Impede a propagação para o Link
+    addItem(product);
+    setShowAddedMessage(true);
+    setTimeout(() => setShowAddedMessage(false), 2000);
+  };
 
-  return (
-    // Envolve o cartão inteiro com o Link para navegar para a página de detalhes do produto
-    <Link to={`/produto/${product.id}`} className="product-card-link">
-      <div className="product-card">
-        <div className="product-image-container">
-          <img
-            src={product.imageUrl || 'https://via.placeholder.com/250x250?text=Sem+Imagem'} // Exibe a imagem do produto ou um placeholder
-            alt={product.name} // Texto alternativo para acessibilidade
-            className="product-image"
-          />
-        </div>
-        <h3 className="product-name">{product.name}</h3> {/* Nome do produto */}
-        <p className="product-price">R$ {product.price.toFixed(2).replace('.', ',')}</p> {/* Preço formatado */}
-        <button className="add-to-cart-btn" onClick={handleAddToCart}>
-          Adicionar ao Carrinho
-        </button>
-        {/* Mensagem de feedback condicional */}
-        {showAddedMessage && (
-          <span className="added-to-cart-feedback">Adicionado!</span>
-        )}
-      </div>
-    </Link>
-  );
+  return (
+    <div className="product-card">
+      <Link to={`/produto/${product.id}`} className="product-link">
+        <div className="product-image-container">
+          <img
+            src={product.imageUrl || 'https://via.placeholder.com/250x250?text=Sem+Imagem'}
+            alt={product.name}
+            className="product-image"
+          />
+        </div>
+
+        <h3 className="product-name">{product.name}</h3>
+        <p className="product-price">R$ {product.price.toFixed(2).replace('.', ',')}</p>
+      </Link>
+
+      {/* Botão "Adicionar ao Carrinho" fora do Link */}
+      <button className="add-to-cart-button" onClick={handleAddToCart}>
+        Adicionar ao Carrinho
+      </button>
+
+      {showAddedMessage && (
+        <span className="added-to-cart-feedback">Adicionado!</span>
+      )}
+    </div>
+  );
 }
 
 export default ProductCard;

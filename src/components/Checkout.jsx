@@ -8,7 +8,7 @@ const Checkout = ({ cartItems }) => {
   useEffect(() => {
     const createPreference = async () => {
       try {
-        const res = await axios.post("https://generatepixpayment-t5mjlbf24a-uc.a.run.app", {
+        const res = await axios.post("https://createpreference-t5mjlbf24a-uc.a.run.app", {
           items: cartItems,
         });
         setPreferenceId(res.data.id);

@@ -1,7 +1,3 @@
-// functions/index.js
-
-// Carrega as variáveis de ambiente do arquivo .env para process.env
-// Faça isso no topo do arquivo.
 require("dotenv").config();
 
 const functions = require("firebase-functions");

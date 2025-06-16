@@ -7,7 +7,12 @@ const { MercadoPagoConfig, Preference } = require("mercadopago");
 
 const app = express();
 
-app.use(cors({ origin: true }));
+app.use(cors({ 
+  origin: true,
+  methods:['GET','POST','OPTIONS'],
+  allowedHeaders:['Content-Type','Authorization'],
+ }));
+
 app.use(express.json());
 
 // ** MUDANÇA AQUI **
@@ -17,9 +22,20 @@ const client = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN || functions.config().mercadopago.accesstoken,
 });
 
+app.options("/", (req, res) => {
+  res.set("Access-Control-Allow-Origin", "https://joia-app.vercel.app");
+  res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.set("Access-Control-Max-Age", "3600");
+  return res.status(204).send("");
+});
+
+
 app.post("/", async (req, res) => {
   try {
     const { items } = req.body;
+    res.set("Access-Control-Allow-Origin", "https://joia-app.vercel.app");
+    res.status(201).json({ id: result.id });
 
     if (!items || items.length === 0) {
       return res.status(400).json({ error: "O carrinho está vazio." });
@@ -45,6 +61,8 @@ app.post("/", async (req, res) => {
 
     res.status(201).json({ id: result.id });
   } catch (error) {
+    res.set("Access-Control-Allow-Origin", "https://joia-app.vercel.app");
+    res.status(500).json({ error: "Falha ao criar preferência." });
     console.error("Erro no servidor ao criar preferência:", error);
     res.status(500).json({ error: "Falha ao criar preferência." });
   }

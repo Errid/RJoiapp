@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
 import './ProductsPage.css';
-import './ProductCard.css';
+import '../ProductCard.css';
 
 import { db } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';

@@ -1,50 +1,57 @@
+// functions/index.js
+
+// Carrega as variáveis de ambiente do arquivo .env para process.env
+// Faça isso no topo do arquivo.
+require("dotenv").config();
+
 const functions = require("firebase-functions");
-const mercadopago = require("mercadopago");
+const express = require("express");
+const cors = require("cors");
+const { MercadoPagoConfig, Preference } = require("mercadopago");
 
-const {
-  MP_ACCESS_TOKEN
-} = import.meta.env;
+const app = express();
 
-// Configurar seu Access Token do Mercado Pago aqui
-mercadopago.configurations.setAccessToken(MP_ACCESS_TOKEN);
+app.use(cors({ origin: true }));
+app.use(express.json());
 
-// Função HTTP para criar a preferência
-exports.createPreference = functions.https.onRequest(async (req, res) => {
-  // Permitir CORS básico (libera para seu frontend)
-  res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "POST");
-  res.set("Access-Control-Allow-Headers", "Content-Type");
+// ** MUDANÇA AQUI **
+// Agora, o token é lido de process.env, que foi populado pelo dotenv.
+// Para produção, ele lerá a variável configurada no ambiente do Firebase.
+const client = new MercadoPagoConfig({
+  accessToken: process.env.MP_ACCESS_TOKEN || functions.config().mercadopago.accesstoken,
+});
 
-  if (req.method === "OPTIONS") {
-    res.status(204).send("");
-    return;
-  }
-
-  if (req.method !== "POST") {
-    return res.status(405).send("Method Not Allowed");
-  }
-
-  const items = req.body.items;
-
-  const preference = {
-    items: items.map((item) => ({
-      title: item.name,
-      unit_price: Number(item.price),
-      quantity: Number(item.quantity),
-    })),
-    back_urls: {
-      success: "https://seusite.com/success",
-      failure: "https://seusite.com/failure",
-      pending: "https://seusite.com/pending",
-    },
-    auto_return: "approved",
-  };
-
+app.post("/", async (req, res) => {
   try {
-    const response = await mercadopago.preferences.create(preference);
-    res.json({ id: response.body.id });
+    const { items } = req.body;
+
+    if (!items || items.length === 0) {
+      return res.status(400).json({ error: "O carrinho está vazio." });
+    }
+
+    const body = {
+      items: items.map(item => ({
+        title: item.name,
+        quantity: Number(item.quantity),
+        unit_price: Number(item.price),
+        currency_id: "BRL",
+      })),
+      back_urls: {
+        success: "https://seu-site.com/sucesso",
+        failure: "https://seu-site.com/falha",
+        pending: "",
+      },
+      auto_return: "approved",
+    };
+
+    const preference = new Preference(client);
+    const result = await preference.create({ body });
+
+    res.status(201).json({ id: result.id });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Erro ao criar preferência" });
+    console.error("Erro no servidor ao criar preferência:", error);
+    res.status(500).json({ error: "Falha ao criar preferência." });
   }
 });
+
+exports.createPreference = functions.https.onRequest(app);
